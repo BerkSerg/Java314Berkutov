@@ -6,12 +6,15 @@ import java.util.List;
 
 public class AnyTypeContainer {
     public static void main(String[] args) {
-        DataContainer dataContainer = new DataContainer();
+        DataContainer<String> dataContainer = new DataContainer<>();
 
-        dataContainer.add("q");
-        dataContainer.add(1);
-        dataContainer.add(Integer.valueOf(23));
-        dataContainer.add("test");
+        dataContainer.add("нужно");
+        dataContainer.add("не");
+        dataContainer.add("указывать");
+        dataContainer.add("класс");
+        dataContainer.add("при");
+        dataContainer.add("создании");
+        dataContainer.add("контейнера");
 
         System.out.println(dataContainer.getElementByIndex(3));
         System.out.println(dataContainer.getElementByIndex(4));
@@ -20,6 +23,7 @@ public class AnyTypeContainer {
 
         dataContainer.deleteElementByIndex(1);
         System.out.println(dataContainer);
+
     }
 }
 
@@ -44,4 +48,5 @@ class DataContainer<E>{
     public String toString() {
         return Arrays.toString(container.toArray());
     }
-}
+
+ }

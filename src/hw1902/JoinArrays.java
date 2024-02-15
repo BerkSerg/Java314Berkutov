@@ -11,24 +11,31 @@ public class JoinArrays {
         Integer[] arrayFour = {0, 2, 3, 4, 5};
 
         printResult(joinArrays(arrayOne, arrayTwo));
-    }
-
-    private static class SomeContainer<E> {
-        E createContents(Class<E> clazz) throws InstantiationException, IllegalAccessException {
-            return clazz.newInstance();
-        }
+        printResult(joinArrays(arrayTwo, arrayThree));
     }
 
     private static <T> T[] joinArrays(T[] arrayOne, T[] arrayTwo) {
-        T[] result = (T[]) Array.newInstance(arrayOne.getClass(), arrayOne.length + arrayTwo.length);
-        for(int i = 0; i < result.length; i++){
-            result[i] = (T) arrayOne[i];
-            result[i + 1] = arrayTwo[i];
+        if(!arrayOne.getClass().equals(arrayTwo.getClass())){
+            System.out.println("Массивы не могут быть сложены");
+            return null;
+        }
+
+        T[] result = (T[]) Array.newInstance(arrayOne.getClass().getComponentType(), arrayOne.length + arrayTwo.length);
+
+        int i = 0;
+        int j = 0;
+        while ((i + j) < result.length) {
+            if (i < arrayOne.length) {
+                result[i + j] = arrayOne[i++];
+            }
+            if (j < arrayTwo.length) {
+                result[i + j] = arrayTwo[j++];
+            }
         }
         return result;
     }
 
     private static <T> void printResult(T[] result) {
-        System.out.println("Массив: "+ Arrays.toString(result));
+        System.out.println("Массив: " + Arrays.toString(result));
     }
 }

@@ -13,17 +13,19 @@ public class CompareArrays {
     }
 
     private static <T> boolean compareArrays(T[] arrayOne, T[] arrayTwo) {
-        if (arrayOne.getClass().equals(arrayTwo.getClass())) {
-            if (arrayOne.length == arrayTwo.length) {
-                for (int i = 0; i < arrayOne.length; i++) {
-                    if (!arrayOne[i].equals(arrayTwo[i])) {
-                        return false;
-                    }
-                }
-                return true;
+        if (!arrayOne.getClass().equals(arrayTwo.getClass())) {
+            return false;
+        }
+        if (arrayOne.length == arrayTwo.length) {
+            return false;
+        }
+
+        for (int i = 0; i < arrayOne.length; i++) {
+            if (!arrayOne[i].equals(arrayTwo[i])) {
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     private static void printResult(boolean result) {
